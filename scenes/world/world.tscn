@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddekt02bmn5qn"]
+
+[ext_resource type="Script" uid="uid://cxljjcb1amw65" path="res://scenes/world/scripts/world.gd" id="1_c6gwx"]
+[ext_resource type="PackedScene" uid="uid://qcvftb7gjkc" path="res://ui/info_layer.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://cgvqddngxxold" path="res://ui/pause_menu.tscn" id="3_4wyf3"]
+[ext_resource type="Script" uid="uid://ds3xa8di3qncv" path="res://scenes/world/scripts/player_variables.gd" id="4_6m72w"]
+[ext_resource type="Script" uid="uid://jangvoqdkuod" path="res://scenes/world/scripts/level_variables.gd" id="5_v5dby"]
+[ext_resource type="AudioStream" uid="uid://dygpq5x2ti854" path="res://assets/sounds/Music_ambience.mp3" id="6_t5ptc"]
+
+[sub_resource type="Animation" id="Animation_t5ptc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v5dby"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.631373, 0.462745, 0, 1), Color(0.631373, 0.462745, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bq33v"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.631373, 0.462745, 0, 0), Color(0.631373, 0.462745, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2gmx"]
+_data = {
+&"RESET": SubResource("Animation_t5ptc"),
+&"fade_in": SubResource("Animation_v5dby"),
+&"fade_out": SubResource("Animation_bq33v")
+}
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_c6gwx")
+
+[node name="InfoLayer" parent="." instance=ExtResource("2_rwgxs")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_4wyf3")]
+
+[node name="PlayerVariables" type="Node" parent="."]
+script = ExtResource("4_6m72w")
+
+[node name="LevelVariables" type="Node" parent="."]
+script = ExtResource("5_v5dby")
+
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FadeLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeLayer/ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_j2gmx")
+}
+
+[node name="LoadingLabel" type="Label" parent="FadeLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.875
+anchor_top = 0.922
+anchor_right = 0.992
+anchor_bottom = 0.986
+offset_left = -6.10352e-05
+offset_top = 0.0799866
+offset_right = 0.119995
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading..."
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("6_t5ptc")
+volume_db = -20.0

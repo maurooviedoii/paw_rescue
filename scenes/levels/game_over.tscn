@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://dypj5g5xb2ido"]
+
+[ext_resource type="Script" uid="uid://cis3nh532iluo" path="res://scenes/levels/scripts/game_over.gd" id="1_oo8kp"]
+[ext_resource type="AudioStream" uid="uid://br71xbophbiyp" path="res://assets/sounds/Music_Tense.mp3" id="2_org1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0541"]
+bg_color = Color(0.631373, 0.462745, 0, 0.854902)
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_oo8kp")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u0541")
+
+[node name="LabelGameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -33.5
+offset_right = 130.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+
+[node name="LabelPressAnyButton" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = 45.5
+offset_right = 52.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Press any button"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("2_org1n")
+volume_db = -20.0

@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://cnwvjj8g5pkn7"]
+
+[ext_resource type="Script" uid="uid://bvolglxaxp1ui" path="res://scenes/enemy/scripts/enemy_boss_bullet.gd" id="1_qfhr3"]
+[ext_resource type="Texture2D" uid="uid://u8mo7c7dv8au" path="res://assets/Boss/Bat.png" id="2_i2yr6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7kaf"]
+atlas = ExtResource("2_i2yr6")
+region = Rect2(0, 0, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s60j7"]
+atlas = ExtResource("2_i2yr6")
+region = Rect2(64, 0, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjg0y"]
+atlas = ExtResource("2_i2yr6")
+region = Rect2(128, 0, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqp8c"]
+atlas = ExtResource("2_i2yr6")
+region = Rect2(192, 0, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xww13"]
+atlas = ExtResource("2_i2yr6")
+region = Rect2(256, 0, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcd8v"]
+atlas = ExtResource("2_i2yr6")
+region = Rect2(320, 0, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfdn1"]
+atlas = ExtResource("2_i2yr6")
+region = Rect2(384, 0, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujg6i"]
+atlas = ExtResource("2_i2yr6")
+region = Rect2(448, 0, 64, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khyep"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7kaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s60j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjg0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqp8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xww13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcd8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfdn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujg6i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f78w8"]
+size = Vector2(24, 26)
+
+[node name="BossBullet" type="Area2D"]
+disable_mode = 2
+script = ExtResource("1_qfhr3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+sprite_frames = SubResource("SpriteFrames_khyep")
+frame_progress = 0.703491
+
+[node name="BossBullet" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_f78w8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(1.2, 1.3)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
