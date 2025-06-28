@@ -94,34 +94,36 @@ animations = [{
 script = ExtResource("1_01oip")
 
 [node name="LifePointsLabel" type="Label" parent="."]
-offset_left = 609.0
+offset_left = 602.0
 offset_top = 17.0
-offset_right = 646.0
-offset_bottom = 37.0
+offset_right = 639.0
+offset_bottom = 43.0
 size_flags_horizontal = 4
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 18
 text = "99x"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(590, 18)
+position = Vector2(583, 22)
 scale = Vector2(0.575, 0.5)
 sprite_frames = SubResource("SpriteFrames_lgguw")
+autoplay = "default"
 frame_progress = 0.247426
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(533, 25)
+position = Vector2(517, 29)
 sprite_frames = SubResource("SpriteFrames_fysa1")
+autoplay = "default"
 frame_progress = 0.327828
 
 [node name="BonesCollected" type="Label" parent="."]
-offset_left = 543.0
+offset_left = 530.0
 offset_top = 17.0
-offset_right = 581.0
-offset_bottom = 37.0
+offset_right = 579.0
+offset_bottom = 43.0
 size_flags_horizontal = 4
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 18
 text = "99/99"

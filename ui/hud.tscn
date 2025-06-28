@@ -2567,14 +2567,14 @@ position = Vector2(-9.5, 14)
 position = Vector2(180, 299)
 sprite_frames = SubResource("SpriteFrames_xtm2r")
 autoplay = "default"
-frame_progress = 0.0556456
+frame_progress = 0.0401508
 flip_h = true
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(491, 298)
 sprite_frames = SubResource("SpriteFrames_3ju8l")
 autoplay = "default"
-frame_progress = 0.903328
+frame_progress = 0.887834
 
 [node name="Bone" parent="." instance=ExtResource("12_so1yu")]
 position = Vector2(440, 277)
@@ -2583,13 +2583,13 @@ position = Vector2(440, 277)
 position = Vector2(38, 298)
 sprite_frames = SubResource("SpriteFrames_b1px6")
 autoplay = "default"
-frame_progress = 0.982145
+frame_progress = 0.966656
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
 position = Vector2(621, 297)
 sprite_frames = SubResource("SpriteFrames_uuxm1")
 autoplay = "default"
-frame_progress = 0.200448
+frame_progress = 0.184952
 
 [connection signal="mouse_entered" from="margin_container_buttons/box_container_buttons/button_new_game" to="." method="_on_button_new_game_mouse_entered"]
 [connection signal="mouse_exited" from="margin_container_buttons/box_container_buttons/button_new_game" to="." method="_on_button_new_game_mouse_exited"]
